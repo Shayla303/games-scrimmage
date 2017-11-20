@@ -1,0 +1,13 @@
+
+    <a href="/">Back</a>
+    <h2>Gamers</h2>
+
+    {{#each gamerData}}
+    <form action="/gamers" method="post">
+      <a href="/gamers/"><h2>{{name}}</h2></a>
+      {{/each}}
+      <h1>Add Gamer</h1>
+      <label>Name</label>
+      <input type="text" name="name" value="" placeholder ="Enter Name">
+      <button type="submit">Add Gamer</button>
+    </form>

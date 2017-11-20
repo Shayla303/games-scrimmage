@@ -1,0 +1,21 @@
+
+    <a href="/">Back</a>
+    {{#each gameCard}}
+    <a href="/games/{{id}}"><h2>{{name}} {{platform}}</h2></a>
+    {{/each}}
+    <h5>Add Game</h5>
+    <form action="/games/addGame" method="post">
+      <label>Game Name:</label>
+      <input type="text" name="name" value="">
+      <label>Platform :</label>
+      <input type="text" name="platform" value="">
+      <button type="submit">Add Game</button>
+    </form>
+
+<!-- //creates the game link to click and go to the onegame page//
+
+//can add the delete button
+
+<input type="submit" name="" value="Delete {{name}}?" class ="delete">
+
+<!-- <a href="#"><h1>{{name}}  {{platform}}</h1></a> -->

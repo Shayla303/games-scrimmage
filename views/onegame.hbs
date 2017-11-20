@@ -1,0 +1,15 @@
+
+    <a href="/games">Back</a>
+    {{#each gameCard}}
+    <form action="/games/update/{{id}}?_method=PUT" method="post">
+      <input type="text" name="name" value="{{name}}">
+      <input type="text" name="platform" value="{{platform}}">
+      <button type="submit">Update</button>
+    </form>
+
+
+    <form action="/games/delete/{{id}}?_method=DELETE" method="post">
+      <button type="delete">Delete</button>
+    </form>
+
+    {{/each}}
