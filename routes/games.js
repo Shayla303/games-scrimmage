@@ -15,6 +15,9 @@ router.get('/', function(req,res,next) {
   .then((gameCard) =>{
         res.render('games', {gameCard:gameCard })
       })
+      .catch((err) =>{
+        console.log(err)
+      })
   })
 
 //post requests to listen for a path to set as my action in the form(event listener) adds a game to the DB
