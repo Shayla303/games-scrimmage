@@ -1,17 +1,16 @@
 
 <a href="/gamers">Back</a>
 
-{{#each gamerData}}
-<a href="/gamers/{{id}}"><h2>{{name}}{{gameCard:platform}}</h2></a>
-<form action ="/gamers/delete/{{id}}?_method=DELETE" method="post">
-  <button type="delete">Remove</button>
+<input type="text" name="name" value="{{gamerData.name}}"/>
+{{#each gamerGamesData}}
+<p>{{name}} {{platform}}</p>
+<form action ="/gamers/{{gamers_id}}/remove/{{games_id}}?_method=DELETE" method="post">
+  <button type="submit">Remove</button>
 </form>
-
+{{/each}}
+<!-- update to Gamer DB -->
 <h2> Add Gamer</h2>
-
-<form action="/gamers/update/{{id}}?_method=PUT" method="post">
-  <input type="text" name="name" value="{{name}}"/>
+<form action="/gamers/{{gamersId.id}}/addGamer?_method=PUT" method="post">
+  <input type="text" name="name" value="name"/>
   <button type="submit">Add Gamer</button>
 </form>
-
-{{/each}}

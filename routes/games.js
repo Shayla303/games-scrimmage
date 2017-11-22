@@ -47,6 +47,7 @@ router.put('/update/:id', function(req,res,next) {
   })
 })
 
+//deletes the game entered
 router.delete('/delete/:id', function(req,res,next) {
   const deleteId = req.params.id;
   queries.deleteGame(deleteId)

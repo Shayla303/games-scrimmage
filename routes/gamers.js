@@ -21,32 +21,32 @@ router.post('/', function(req,res,next) {
 })
 
 
-// //this sends the link of the game to the onegamer page
-// router.get('/:id', function(req, res, next) {
-//   const id = req.params.id;
-//   queries.getOneGamer(id)
-//   .then((gamerData)=>{
-//     res.render('onegamer', {gamerData:gamerData})
-//   })
-// })
+//this sends the link of the game to the onegamer page, takes the app.use also into account
+router.get('/:id', function(req, res, next) {
+  const id = req.params.id;
+  queries.getOneGamer(id)
+  .then((gamerData)=>{
+  queries.getOneGamersGames(gamerData[0].name)
+  .then((gamerGamesData)=>{
+    console.log(gamerGamesData)
+    res.render('onegamer', {gamerData:gamerData[0],gamerGamesData})
+  })
+  })
+})
 
 
-// // updates the game and we need to update the DB
-// router.put('/update/:id', function(req,res,next) {
-//   const gameId = req.params.id;
-//   queries.updateGame(gameId, req.body)
-//   .then(updatedGame =>{
-//     res.redirect('/games')
-//   })
-// })
-//
-// router.delete('/delete/:id', function(req,res,next) {
-//   const deleteId = req.params.id;
-//   queries.deleteGame(deleteId)
-//   .then(deletedGame => {
-//     res.redirect('/games')
-//   })
-// })
-//
+// delete the game from the page //
+router.delete('/:gamers_id/remove/:games_id', function(req,res,next) {
+  const deleteId = req.params.gamers_id;
+  const deleteName = req.params.games_id;
+  queries.deleteGame(deleteId,deleteName)
+  .then(deletedGame => {
+    res.redirect('/gamers/'+deleteId)
+  })
+})
 
+
+// updates the game and we need to update the DB
+// router.post('/:id', function(req,res,next) {
+// })
 module.exports = router;

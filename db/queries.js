@@ -33,8 +33,17 @@ function addGamer(newGame) {
   return db('gamers').insert(newGame)
 }
 
-function getOneGamer() {
+function getOneGamer(id) {
   return db('gamers').select().where('gamers.id', id)
+}
+
+function getOneGamersGames(name) {
+  return db('gamers').select().where('gamers.name', name).join('games_gamers', 'gamers.id', 'gamers_id').join('games', 'games.id','games_id')
+}
+
+
+function deleteGame(deleteId,deleteName) {
+  return db('games_gamers').select().where('gamers_id', deleteId).andWhere('games_id', deleteName).del()
 }
 
 module.exports = {
@@ -45,4 +54,7 @@ module.exports = {
   deleteGame,
   getGamers,
   addGamer,
+  getOneGamer,
+  getOneGamersGames,
+  deleteGame
 }
